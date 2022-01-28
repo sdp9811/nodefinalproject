@@ -1,0 +1,74 @@
+<%- include('../Includes/header.ejs') %>
+    <title>
+        <%=title_cart%>
+    </title>
+    <link rel="stylesheet" href="/Style.css">
+    </head>
+
+    <body>
+        <%- include('../Includes/navigation.ejs') %>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-10 col-md-offset-1">
+                        <%if(data.length>0){%>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th class="text-center">Price</th>
+                                        <th>Buy</th>
+
+                                        <th>Remove </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%for(let d of data){%>
+                                        <tr>
+                                            <td class="col-sm-8 col-md-6">
+                                                <div class="media">
+                                                    <a class="thumbnail pull-left" href="#"> <img class="media-object"
+                                                            src="../<%=d.cart[0].prodImage%>"
+                                                            style="width: 72px; height: 72px;"> </a>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading"><a href="#">
+                                                                <%=d.cart[0].prodName %>
+                                                            </a></h4>
+                                                        <h5 class="media-heading"> by <a href="#">
+                                                                <%=d.cart[0].prodDesc %>
+                                                            </a></h5>
+                                                        <span>Status: </span><span class="text-success"><strong>In
+                                                                Stock</strong></span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                                <p>
+                                                    <%=d.quantity%>
+                                                </p>
+                                            </td>
+                                            <td class="col-sm-1 col-md-1 text-center"><strong>$<%=d.cart[0].prodPrice %>
+                                                </strong></td>
+
+                                            <td class="col-sm-1 col-md-1">
+
+                                                <span class="glyphicon glyphicon-remove"></span> <a href="/getPay"
+                                                    class="btn btn-primary">Buy</a>
+
+                                            </td>
+                                            <td> <a href="/delete_cart/<%=d._id%>" class="btn btn-warning">Remove</a>  </td>
+                                            <%}%>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <%} else{%>
+                                <h2> data not found</h2>
+
+                                <%}%>
+                    </div>
+                </div>
+            </div>
+
+
+            <%- include('../Includes/footer.ejs') %>

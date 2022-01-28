@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title> <%=title_edt %> </title>
+        <%- include('../Includes/header.ejs') %>
+        <link   rel="stylesheet" href="/Style.css">
+    </head>
+    <body>
+        <%- include('../Includes/navigation.ejs') %>
+        <div class="ttl"> <h1> Edit Product
+        </h1>
+        </div>
+        <div class="container_a">
+            <div class="left1"></div>
+            <div class="right">
+            <div class="formBox">
+                <form method="POST" action="/posteditValue" enctype="multipart/form-data" >
+                    <input type="hidden" value="<%=csrf%>" name="_csrf">
+                    <input type="hidden" name="productId"  value="<%=data._id%>" >
+                    <p>Product Name</p>
+                    <input type="text" name="pname"  value="<%=data.prodName%>">
+                    <p>Price</p>
+                    <input type="text" name="price"  value="<%=data.prodPrice%>">
+                    <p>Description</p>
+                    <input type="text" name="pdesc"  value="<%=data.prodTyp%>" >
+                    <p>Product Image</p>
+                    <input type="file" name="pimg"  value="<%=data.prodTyp%>" >
+
+                    <input type="submit"  value="Submit">
+                </form>
+    
+            </div>
+    
+            </div>
+        </div>
+        
+    <%- include('../Includes/footer.ejs') %>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title><%=title_shop %></title>
+        <link   rel="stylesheet" href="/Style.css">
+        <%- include('../Includes/header.ejs') %>
+    </head>
+    <body>
+      <%- include('../Includes/navigation.ejs') %>
+        
+                <div class ="container">
+                  <div class="srchBox">
+                  <form method="POST" action="/searchItem">
+                    <input type="hidden" value="<%=csrf%>" name="_csrf">
+                  <input type="text" name="searchText" placeholder="Search Here">
+                  <button type="submit">Search</button>
+                </form>
+              </div>
+              <%if (data.length>0) {%>
+              <div id="columns" class="columns_5">
+                <%for(let val of data){%>
+                <figure>
+                <img src="../<%=val.prodImage%>" height="120px" width="140px">
+                <figcaption><%=val.prodName %></figcaption>
+                  <span class="price">$<%=val.prodPrice %></span>
+                  <a class="button" href="/sprod/<%=val._id%>">Details</a>
+                  <form method="POST" action="/addToCart">
+                    <input type="hidden" value="<%=csrf%>" name="_csrf">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="productId" value="<%=val._id%>">
+                  <input type="submit"  class="btn btn-lg btn-outline-primary text-uppercase" value="Add to cart" ></form>
+                </figure>
+                <%}%>
+                   </div>
+                   <%} else {%> 
+                    <h1>Data not found</h1>
+                    <%}%>               
+              </div>
+                <%- include('../Includes/footer.ejs') %>
+    </body>
+</html>

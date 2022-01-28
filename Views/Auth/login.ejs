@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" >
+<head>
+	<meta charset="utf-8">
+	<title><%=title_lgn %></title>
+	<%- include('../Includes/header.ejs') %>
+	<link rel="stylesheet" type="text/css" href="Style.css">
+</head>
+<body>
+	<%- include('../Includes/navigation.ejs') %>
+	<div class="centerlg">
+		<h1 class="lgn">Login</h1>
+		<form method="POST" action="/lgnUser" >
+			<input type="hidden" value="<%=csrf%>" name="_csrf">
+			<div class="txt-field">
+				<input type="text" name="email" value="<%if(cookie_data.cookiedata) {%> <%=cookie_data.cookiedata.emailCookie%> <%}%>" >
+				<label>Email</label>
+				<%if(errorLgn){%>
+					<div><p class="errmsg"> <%=errorLgn%> </p></div>
+					<%}%>
+			</div>
+		<div class="txt-field">
+				<input type="Password" name="password">
+				<label>Password</label>
+			</div>
+          <div class="checklg">
+			  <input type="checkbox" name="check" id="chk" >
+			  <label> Check me out </label>
+		  </div>
+		  <div>
+			  <%if(error.length>0) {%> 
+				<%for (let err of error) {%> <div> 
+				<p style="color: chocolate;"><%=err.msg%> </p></div>
+				<%}%>
+			  <%}%>
+		  </div>
+
+			<div class="pass"> Forgot Password? <a href="/forgotPassword"> click here</a> </div>
+            <input type="submit" value="Login">
+            <div class="signup-link"> Not a member? 
+           <a href="/regFrm"> Sign Up </a>
+            </div>
+		</form>
+	</div>
+	<%- include('../Includes/footer.ejs') %>
+</body>
+</html>

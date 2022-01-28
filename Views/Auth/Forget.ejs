@@ -1,0 +1,18 @@
+<%- include('../Includes/header.ejs') %>
+<title><%=title_forgot%></title>
+<link   rel="stylesheet" href="/Style.css">
+</head>
+<body>
+    <%- include('../Includes/navigation.ejs') %>
+    <div class="centerlg">
+		<h1 class="lgn">Enter Registered Email</h1>
+		<form method="POST" action="/PostforgotPassword" >
+			<input type="hidden" value="<%=csrf%>" name="_csrf">
+			<div class="txt-field">
+				<input type="text" name="email">
+				<label>Email</label>
+			</div>
+		<input type="submit" value="Reset">
+            </form>
+	</div>
+<%- include('../Includes/footer.ejs') %>

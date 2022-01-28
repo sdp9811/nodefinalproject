@@ -1,0 +1,30 @@
+<%- include('../Includes/header.ejs') %>
+<title>navbar</title>
+<link   rel="stylesheet" href="/Style.css">
+</head>
+<header>
+  <input type="checkbox" name="" id="toggler">
+  <label for="toggler" class="fas fa-bars"></label>
+
+  <a class=" logo <%= path === '/homePage' ? 'active' : ' ' %>" href="/homePage" >MArt<span>. </span></a>
+<nav class="navbar">
+  <%if(isAuthenticated){%>
+<a class="<%= path === '/addproduct' ? 'active' : ' ' %>" href="/addProduct">addnew</a>
+<a class="<%= path === '/details' ? 'active' : ' ' %>" href="/details">product</a>
+<a  class="<%= path === '/shpDetails' ? 'active' : ' ' %>" href="/shpDetails">shop</a>
+<a class="<%= path === '/lgOut' ? 'active' : ' ' %>" href="/lgOut">Logout</a>
+<%}%>
+<%if(!isAuthenticated){%>
+  <a class="<%= path === '/regFrm' ? 'active' : ' ' %>" href="/regFrm">signUp</a>
+  <a class="<%= path === '/lgnFrm' ? 'active' : ' ' %>" href="/lgnFrm">login</a>
+  <a  href="#about">AboutUs</a>
+  <%}%>
+</nav>
+
+<div class="icons">
+<a href="#" class="fas fa-heart"></a>
+<a href="#" class="fas fa-shopping-cart"></a>
+<a href="#" class="fas fa-user"></a>
+</div>
+
+</header>

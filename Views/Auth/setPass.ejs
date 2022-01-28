@@ -1,0 +1,22 @@
+<%- include('../Includes/header.ejs') %>
+<title><%=title_setPass%></title>
+<link   rel="stylesheet" href="/Style.css">
+</head>
+<body>
+    <%- include('../Includes/navigation.ejs') %>
+    <div class="centerlg">
+		<h1 class="lgn">Reset Password</h1>
+		<form method="POST" action="/setNewPassword" >
+			<input type="hidden" value="<%=csrf%>" name="_csrf">
+            <input type="hidden" name="spdid"  value="<%=data._id%>" >
+        		<div class="txt-field">
+				<input type="password" name="password">
+				<label>Password</label>
+                <input type="hidden" name="fname" value="<%=data.firstName%>">
+                <input type="hidden" name="lname" value="<%=data.lastName%>" >
+                <input type="hidden" name="email" value="<%=data.eMail%>">
+			</div>
+		<input type="submit" value="Reset">
+            </form>
+	</div>
+<%- include('../Includes/footer.ejs') %>

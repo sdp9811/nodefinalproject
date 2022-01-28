@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title><%=title_det %></title>
+        <link   rel="stylesheet" href="/Style.css">
+        <%- include('../Includes/header.ejs') %>
+    </head>
+    <body>
+        <%- include('../Includes/navigation.ejs') %>
+        
+       
+        
+        <div class="card">
+          <div class="row">
+            <aside class="col-sm-5 border-right">
+        <article class="gallery-wrap"> 
+        <div class="img-big-wrap">
+          <div> <a href="#"><img src="../<%=data.prodImage%>" height="100%" width="50%" ></a></div>
+        </div> 
+     
+        </article> 
+            </aside>
+            <aside class="col-sm-7">
+        <article class="card-body p-5">
+          <h3 class="title mb-3"><%=data.prodName %></h3>
+        
+        <p class="price-detail-wrap"> 
+          <span class="price h3 text-warning"> 
+            <span class="currency">US $</span><span class="num"><%=data.prodPrice %></span>
+          </span> 
+          <span>/per pcs</span> 
+        </p> 
+        <dl class="item-property">
+          <dt>Description</dt>
+          <dd><p>Here goes description consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco </p></dd>
+        </dl>
+        <dl class="param-feature">
+          <dt>Model</dt> 
+          <dd><p><%=data.prodDesc %></p></dd>
+        </dl>   
+        <dl class="param-feature">
+          <dt>Delivery</dt>
+          <dd><p>Russia, USA, and Europe</p></dd>
+        </dl>  
+        
+        <hr>
+          
+          
+          
+          <form method="POST" action="/addToCart">
+            <input type="hidden" value="<%=csrf%>" name="_csrf">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="productId" value="<%=data._id%>">
+          <input type="button"  class="btn btn-lg btn-outline-primary text-uppercase" value="Add to cart" ></form>
+        </article> 
+            </aside> 
+          </div>
+        </div> 
+        
+        
+        </div>
+        
+        
+
+
+       
+          <%- include('../Includes/footer.ejs') %>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> <%=title_page %> </title>
+        <%- include('../Includes/header.ejs') %>
+        <link   rel="stylesheet" href="/Style.css">
+    </head>
+    <body>
+        <%- include('../Includes/navigation.ejs') %>
+    <div class="ttl"> <h1> Add Product
+    </h1>
+    </div>
+    <div class="container_a">
+        <div class="left"></div>
+        <div class="right">
+        <div class="formBox">
+            <form method="POST" action="/postValue" enctype="multipart/form-data" >
+                <input type="hidden" value="<%=csrf%>" name="_csrf">
+                <p>Product Name</p>
+                <input type="text" name="pname" placeholder="product_name">
+                <p>Price</p>
+                <input type="text" name="price" placeholder="price">
+                <p>Product Description</p>
+                <input type="text" name="pdes" >
+                <p>Product Image</p>
+                <input type="file" name="pimg" >
+           
+                <input type="submit"  value="Submit">
+            </form>
+
+        </div>
+
+        </div>
+    </div>
+    <%- include('../Includes/footer.ejs') %>
+    </body>
+</html>

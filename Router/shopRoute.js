@@ -1,0 +1,13 @@
+const express = require('express');
+const auth_check = require('../middle-ware/isAuth');
+const shp_router = express.Router();
+const shpController = require('../Controller/shopController');
+shp_router.get('/shpDetails', shpController.productDetailsShop);
+shp_router.get('/sprod/:mid', shpController.ViewProductShop);
+shp_router.post('/searchItem', shpController.searchProduct);
+shp_router.post('/addToCart' , shpController.postAddToCart);
+shp_router.get('/cartPage', shpController.getCartPage);
+shp_router.get('/delete_cart/:cid' , shpController.deleteCartProduct);
+shp_router.get('/getPay' , shpController.getPaymentPage , auth_check);
+shp_router.get('/paySuccess', shpController.getSuccess , auth_check);
+module.exports = shp_router;
